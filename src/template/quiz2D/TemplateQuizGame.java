@@ -1,33 +1,21 @@
 package template.quiz2D;
 
 import java.awt.Color;
-import java.math.BigDecimal;
-
-
 
 import framework.RWT.RWTContainer;
 import framework.RWT.RWTFrame3D;
 import framework.RWT.RWTVirtualController;
-import framework.game2D.Sprite;
-import framework.gameMain.BaseScenarioGameContainer;
-import framework.gameMain.SimpleRolePlayingGame;
 import framework.gameMain.SimpleScenarioGame;
-import framework.model3D.ModelFactory;
-import framework.model3D.Object3D;
-import framework.model3D.Position3D;
-import framework.model3D.Quaternion3D;
 import framework.model3D.Universe;
-import framework.physics.PhysicsUtility;
 import framework.scenario.Event;
-import framework.scenario.ScenarioManager;
 import framework.scenario.ScenarioState;
 import framework.view3D.Camera3D;
 
 public class TemplateQuizGame extends SimpleScenarioGame {
 	private RWTFrame3D frame;
-	
+
 	@Override
-	public void init(Universe universe, Camera3D camera) {		
+	public void init(Universe universe, Camera3D camera) {
 		// シナリオの設定
 		setScenario("data\\TemplateQuiz\\scenario.xml");
 		container.setScenario(scenario);
@@ -42,33 +30,41 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 		frame.setBackground(Color.BLACK);
 		return frame;
 	}
-	
+
 	@Override
 	protected RWTContainer createRWTContainer() {
 		container = new QuizGameContainer();
 		return container;
 	}
-	
+
 	@Override
 	public void progress(RWTVirtualController virtualController, long interval) {
 	}
-	
+
 	@Override
 	public void showOption(int n, String option) {
 		((QuizGameContainer)container).showOption(n, option);
 	}
 
+	//正解数
+	int count = 0;
+
 	@Override
 	public void action(String action, Event event, ScenarioState nextState) {
 		// シナリオ進行による世界への作用をここに書く
 		if (action.equals("right")) {
+			//正解数のカウント
+			count ++;
+
+			System.out.println(count);
+
 		} else if (action.equals("wrong")) {
 		}
 	}
 
 	/**
 	 * ゲームのメイン
-	 * 
+	 *
 	 * @param args
 	 */
 	public static void main(String[] args) {
