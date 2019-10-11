@@ -30,37 +30,40 @@ public class QuizGameContainer extends BaseScenarioGameContainer {
 		canvas.setRelativeSize(0.2f, 1.0f);		// 3D表示部のサイズ
 		addCanvas(canvas);
 		
-		dialog.setRelativePosition(0.25f, 0.2f);	// ダイアログの左上端
-		dialog.setFont(new Font("", Font.PLAIN, 10));	// 文字のフォント
-		dialog.setColor(Color.WHITE);				// 文字の色
+		
+		dialog.setRelativePosition(0.2f, 0.25f);	// ダイアログの左上端
+		dialog.setFont(new Font("", Font.ROMAN_BASELINE, 12));	// 文字のフォント
+		dialog.setColor(Color.YELLOW);				// 文字の色
 		addWidget(dialog);
 		
-		Font f = new Font("", Font.PLAIN, 30);
+		
+		
+		Font f = new Font("", Font.PLAIN, 37);
 		optionButtons[0] = new RWTButton("1");
 		optionButtons[0].setFont(f);
-		optionButtons[0].setRelativePosition(0.25f, 0.3f);
-		optionButtons[0].setRelativeHeight(0.2f);
+		optionButtons[0].setRelativePosition(0.25f, 0.5f);
+		optionButtons[0].setRelativeHeight(0.1f);
 		optionButtons[0].setRelativeWidth(0.2f);
 		addSelectableWidget(optionButtons[0], 0, 0);
 		
 		optionButtons[1] = new RWTButton("2");
 		optionButtons[1].setFont(f);
-		optionButtons[1].setRelativePosition(0.5f, 0.3f);
-		optionButtons[1].setRelativeHeight(0.2f);
+		optionButtons[1].setRelativePosition(0.5f, 0.5f);
+		optionButtons[1].setRelativeHeight(0.1f);
 		optionButtons[1].setRelativeWidth(0.2f);
 		addSelectableWidget(optionButtons[1], 1, 0);		
 		
 		optionButtons[2] = new RWTButton("3");
 		optionButtons[2].setFont(f);
 		optionButtons[2].setRelativePosition(0.25f, 0.7f);
-		optionButtons[2].setRelativeHeight(0.2f);
+		optionButtons[2].setRelativeHeight(0.1f);
 		optionButtons[2].setRelativeWidth(0.2f);
 		addSelectableWidget(optionButtons[2], 0, 1);
 		
 		optionButtons[3] = new RWTButton("4");
 		optionButtons[3].setFont(f);
 		optionButtons[3].setRelativePosition(0.5f, 0.7f);
-		optionButtons[3].setRelativeHeight(0.2f);
+		optionButtons[3].setRelativeHeight(0.1f);
 		optionButtons[3].setRelativeWidth(0.2f);
 		addSelectableWidget(optionButtons[3], 1, 1);		
 		
