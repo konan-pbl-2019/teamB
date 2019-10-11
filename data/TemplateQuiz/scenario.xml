@@ -4,34 +4,55 @@
 			<Event name="開始" action="openDialog" trans="一問目">
 			</Event>
 		</State>
-		<State name="一問目" message="パンはパンでも食べられないパンは？">
-			<Event name="コッペパン" action="wrong" trans="終了">
+		<State name="一問目" message="サボテンのIQは？">
+			<Event name="5" action="wrong" trans="二問目">
 			</Event>
-			<Event name="フランスパン" action="wrong" trans="終了">
+			<Event name="12" action="wrong" trans="二問目">
 			</Event>
-			<Event name="フライパン" action="right" trans="二問目">
+			<Event name="2" action="right" trans="二問目">
 			</Event>
-			<Event name="食パン" action="wrong" trans="終了">
-			</Event>
-		</State>
-		<State name="二問目" message="トリはトリでも飛べないトリは？">
-			<Event name="ワシ" action="wrong" trans="終了">
-			</Event>
-			<Event name="チリトリ" action="right" trans="三問目">
-			</Event>
-			<Event name="ハト" action="wrong" trans="終了">
-			</Event>
-			<Event name="カラス" action="wrong" trans="終了">
+			<Event name="14" action="wrong" trans="二問目">
 			</Event>
 		</State>
-		<State name="三問目" message="ふとんがhu？">
-			<Event name="ワシ" action="wrong" trans="終了">
+		<State name="二問目" message="指の爪は6か月で生え変わるが足の爪は何か月で生え変わるでしょうか？">
+			<Event name="8ヵ月" action="wrong" trans="三問目">
 			</Event>
-			<Event name="ふっとんだ" action="right" trans="全問正解">
+			<Event name="12ヵ月" action="right" trans="三問目">
 			</Event>
-			<Event name="カニ" action="wrong" trans="終了">
+			<Event name="6ヵ月" action="wrong" trans="三問目">
 			</Event>
-			<Event name="カラス" action="wrong" trans="終了">
+			<Event name="24ヵ月" action="wrong" trans="三問目">
+			</Event>
+		</State>
+		<State name="三問目" message="Windowsの草原の画像の落札金額はいくらでしょう？">
+			<Event name="0円" action="wrong" trans="四問目">
+			</Event>
+			<Event name="200億円" action="right" trans="四問目">
+			</Event>
+			<Event name="1000万" action="wrong" trans="四問目">
+			</Event>
+			<Event name="10億円" action="wrong" trans="四問目">
+			</Event>
+		</State>
+		<State name="四問目" message="パソコンのマウスの移動距離を表す単位は何でしょう？">
+			<Event name="mv" action="wrong" trans="五問目">
+			</Event>
+			<Event name="ミッキー" action="right" trans="五問目">
+			</Event>
+			<Event name="ミニー" action="wrong" trans="五問目">
+			</Event>
+			<Event name="グーフィー" action="wrong" trans="五問目">
+			</Event>
+		</State>
+		<State name="五問目" message="誤りを表す単語である「バグ」という言葉
+		    の語源はコンピュータに蛾が侵入したことが由来になっているんですがゴキブリは英語で何というでしょう？">
+			<Event name="Cricket" action="wrong" trans="終了">
+			</Event>
+			<Event name="Cockroach" action="right" trans="全問正解">
+			</Event>
+			<Event name="Elephant" action="wrong" trans="終了">
+			</Event>
+			<Event name="Cokekokko" action="wrong" trans="終了">
 			</Event>
 		</State>
 		<State name="全問正解" message="おめでとう！！">
