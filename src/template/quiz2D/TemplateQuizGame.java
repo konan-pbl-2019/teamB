@@ -1,10 +1,9 @@
 package template.quiz2D;
 
-import java.awt.Color;
-
 import framework.RWT.RWTContainer;
 import framework.RWT.RWTFrame3D;
 import framework.RWT.RWTVirtualController;
+import framework.game2D.Ground2D;
 import framework.gameMain.SimpleScenarioGame;
 import framework.model3D.Universe;
 import framework.scenario.Event;
@@ -20,6 +19,11 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 		setScenario("data\\TemplateQuiz\\scenario.xml");
 		container.setScenario(scenario);
 		scenario.fire("ŠJŽn");
+
+		int windowSizeWidth = 1000;
+		int windowSizeHeight = 800;
+		Ground2D stage = new Ground2D(null,"documents\\quizu.jpg", windowSizeWidth, windowSizeHeight);
+		universe.place(stage);
 	}
 
 	@Override
@@ -27,7 +31,7 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 		frame = new RWTFrame3D();
 		frame.setSize(1000, 800);
 		frame.setTitle("Template for 2D Quiz Game");
-		frame.setBackground(Color.BLACK);
+
 		return frame;
 	}
 
