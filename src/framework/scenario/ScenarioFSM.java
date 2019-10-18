@@ -4,7 +4,7 @@ import java.util.Hashtable;
 
 public class ScenarioFSM extends FSM {
 	ScenarioManager manager;
-	
+
 	public ScenarioFSM(State initialState, Hashtable<String, State> states, ScenarioManager manager) {
 		super(initialState, states);
 		this.manager = manager;
@@ -16,6 +16,12 @@ public class ScenarioFSM extends FSM {
 		ScenarioAction action = ((ScenarioState)currentState).getAction(e);
 		boolean result = super.trans(e);
 		manager.action(action, e, (ScenarioState)currentState);
+		return result;
+	}
+
+
+	public boolean go(State newState) {
+		boolean result = super.go(newState);
 		return result;
 	}
 }
