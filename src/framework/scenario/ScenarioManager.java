@@ -5,8 +5,8 @@ import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -21,21 +21,21 @@ public class ScenarioManager {
 	private Hashtable<String, ScenarioFSM> stateMachines = new Hashtable<String, ScenarioFSM>();
 	private Hashtable<String, ScenarioState> allStates = new Hashtable<String, ScenarioState>();
 	private Hashtable<String, Event> allEvents = new Hashtable<String, Event>();
-	
+
 	public ScenarioManager(String xmlFileName, IWorld realWorld) {
 		this.realWorld = realWorld;
 		try {
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-	
+
 			factory.setValidating(true);
 			factory.setAttribute(
 					"http://java.sun.com/xml/jaxp/properties/schemaLanguage",
 					"http://www.w3.org/2001/XMLSchema");
-	
+
 			DocumentBuilder builder = factory.newDocumentBuilder();
 			builder.setErrorHandler(new DefaultHandler());
 			Document document = builder.parse(xmlFileName);
-	
+
 			// —LŒÀó‘Ôƒ}ƒVƒ“‚Ìì¬Aó‘Ô‚Ì“o˜^AƒCƒxƒ“ƒg‚Ì“o˜^
 			Hashtable<ScenarioState, NodeList> allTrans = new Hashtable<ScenarioState, NodeList>();
 			NodeList scenario = document.getChildNodes();
@@ -64,7 +64,7 @@ public class ScenarioManager {
 									if (e == null) {
 										e = new Event(eventName);
 										allEvents.put(eventName, e);
-									}							
+									}
 								}
 							}
 						}
@@ -76,7 +76,7 @@ public class ScenarioManager {
 					stateMachines.put(fsmName, fsm);
 				}
 			}
-			
+
 			// ó‘Ô‘JˆÚ‚ğİ’è‚·‚é
 			Set<Entry<ScenarioState, NodeList>> allTransEntries = allTrans.entrySet();
 			Iterator<Entry<ScenarioState, NodeList>> it = allTransEntries.iterator();
@@ -138,7 +138,7 @@ public class ScenarioManager {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public void fire(Event e){
 		Collection<ScenarioFSM> fsms = stateMachines.values();
 		Iterator<ScenarioFSM> it = fsms.iterator();
@@ -147,11 +147,25 @@ public class ScenarioManager {
 			fsm.trans(e);
 		}
 	}
-	
+
 	public void fire(String eventName) {
 		Event e = allEvents.get(eventName);
 		if (e == null) return;
 		fire(e);
+	}
+
+
+	public void go(State newState){
+		newState.getOwner().go(newState);
+		if (newState instanceof ScenarioState) {
+			init((ScenarioState) newState);
+		}
+	}
+
+	public void go(String stateName) {
+		State newState = allStates.get(stateName);
+		if (newState == null) return;
+		go(newState);
 	}
 
 	public void action(ScenarioAction action, Event event, ScenarioState nextState) {
@@ -164,13 +178,19 @@ public class ScenarioManager {
 			} else if (sAction.equals("print")) {
 				System.out.println(event.getName());
 			}
+			init(nextState);
 			realWorld.action(sAction, event, nextState);
+			return;
 		}
+		init(nextState);
+	}
+
+	private void init(ScenarioState newState) {
 		if (realWorld.isDialogOpen()) {
-			String message = nextState.getMessage();
+			String message = newState.getMessage();
 			if (message != null) {
 				realWorld.dialogMessage(message);
-				Enumeration<Event> events = nextState.getEvents();
+				Enumeration<Event> events = newState.getEvents();
 				int n = 0;
 				while (events.hasMoreElements()) {
 					Event ev = events.nextElement();
