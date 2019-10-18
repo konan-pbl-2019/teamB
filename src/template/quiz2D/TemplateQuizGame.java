@@ -68,6 +68,20 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 		} else if (action.equals("wrong")) {
 			//不正解時のSE
 			incorrect.play();
+		} else if(action.equals("lastright")) {
+			count ++;
+
+			if(count > 2) {
+				scenario.go("全問正解");
+			} else {
+				scenario.go("終了");
+			}
+		} else if (action.equals("lastwrong")) {
+			if(count > 2) {
+				scenario.go("全問正解");
+			} else {
+				scenario.go("終了");
+			}
 		}
 	}
 
