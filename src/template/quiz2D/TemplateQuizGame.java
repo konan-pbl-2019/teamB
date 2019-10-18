@@ -12,8 +12,11 @@ import framework.view3D.Camera3D;
 
 public class TemplateQuizGame extends SimpleScenarioGame {
 	private RWTFrame3D frame;
+
+	//SEの導入
 	private Sound3D correct = new Sound3D("data//TemplateQuiz//Quiz-Buzzer02-1.wav");
 	private Sound3D incorrect = new Sound3D("data//TemplateQuiz//Quiz-Wrong_Buzzer01-1.wav");
+
 	@Override
 	public void init(Universe universe, Camera3D camera) {
 		// シナリオの設定
@@ -53,13 +56,17 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 	public void action(String action, Event event, ScenarioState nextState) {
 		// シナリオ進行による世界への作用をここに書く
 		if (action.equals("right")) {
+
+			//正解時のSE
 			correct.play();
+
 			//正解数のカウント
 			count ++;
 
 			System.out.println(count);
 
 		} else if (action.equals("wrong")) {
+			//不正解時のSE
 			incorrect.play();
 		}
 	}
