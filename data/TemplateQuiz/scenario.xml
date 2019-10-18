@@ -45,13 +45,13 @@
 			</Event>
 		</State>
 		<State name="五問目" message="ゴキブリは英語で何というでしょう？">
-			<Event name="Cricket" action="wrong" trans="終了">
+			<Event name="Cricket" action="lastwrong" trans="終了">
 			</Event>
-			<Event name="Cockroach" action="right" trans="全問正解">
+			<Event name="Cockroach" action="lastright" trans="全問正解">
 			</Event>
-			<Event name="Elephant" action="wrong" trans="終了">
+			<Event name="Elephant" action="lastwrong" trans="終了">
 			</Event>
-			<Event name="Cokekokko" action="wrong" trans="終了">
+			<Event name="Cokekokko" action="lastwrong" trans="終了">
 			</Event>
 		</State>
 		<State name="全問正解" message="おめでとう！！">
