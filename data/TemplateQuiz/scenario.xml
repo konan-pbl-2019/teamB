@@ -14,7 +14,7 @@
 			<Event name="14" action="wrong" trans="二問目">
 			</Event>
 		</State>
-		<State name="二問目" message="指の爪は6か月で生え変わるが足の爪は何か月で生え変わるでしょうか？">
+		<State name="二問目" message="指の爪は6か月、では足の爪は何か月で生え変わるでしょう？">
 			<Event name="8ヵ月" action="wrong" trans="三問目">
 			</Event>
 			<Event name="12ヵ月" action="right" trans="三問目">
