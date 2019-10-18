@@ -44,8 +44,7 @@
 			<Event name="グーフィー" action="wrong" trans="五問目">
 			</Event>
 		</State>
-		<State name="五問目" message="誤りを表す単語である「バグ」という言葉
-		    の語源はコンピュータに蛾が侵入したことが由来になっているんですがゴキブリは英語で何というでしょう？">
+		<State name="五問目" message="ゴキブリは英語で何というでしょう？">
 			<Event name="Cricket" action="wrong" trans="終了">
 			</Event>
 			<Event name="Cockroach" action="right" trans="全問正解">
