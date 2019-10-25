@@ -20,6 +20,9 @@ public class QuizGameContainer extends BaseScenarioGameContainer {
 
 	private RWTButton[] optionButtons = new RWTButton[4];
 
+	private RWTImage gameover;
+	private RWTImage clear;
+
 	public QuizGameContainer() {
 		super();
 	}
@@ -33,7 +36,7 @@ public class QuizGameContainer extends BaseScenarioGameContainer {
 
 
 		dialog.setRelativePosition(0.2f, 0.28f);	// ダイアログの左上端
-		dialog.setFont(new Font("", Font.ROMAN_BASELINE, 12));	// 文字のフォント
+		dialog.setFont(new Font("", Font.PLAIN, 12));	// 文字のフォント
 		dialog.setColor(Color.YELLOW);				// 文字の色
 		addWidget(dialog);
 
@@ -75,6 +78,20 @@ public class QuizGameContainer extends BaseScenarioGameContainer {
 		background.setSize(800, 800);
 		addWidgetOnBack(background);
 
+		gameover = new RWTImage("documents\\罰ゲーム.jpg");
+		gameover.setRelativePosition(0.1f, -0.05f);
+		gameover.setSize(800, 800);
+		gameover.setVisible(false);
+		addWidget(gameover);
+
+		clear = new RWTImage("documents\\女.jpg");
+		clear.setRelativePosition(0.1f, -0.05f);
+		clear.setSize(800, 800);
+		clear.setVisible(false);
+		addWidget(clear);
+
+
+
 		repaint();
 	}
 
@@ -82,6 +99,14 @@ public class QuizGameContainer extends BaseScenarioGameContainer {
 		optionButtons[n].setLabel(option);
 	}
 
+	public void setClear() {
+			clear.setVisible(true);
+	}
+	
+	public void setGameover() {
+			gameover.setVisible(true);
+	}
+		
 	@Override
 	public void keyPressed(RWTVirtualKey key) {
 		if (key.getVirtualKey() == RWTVirtualController.RIGHT) {
