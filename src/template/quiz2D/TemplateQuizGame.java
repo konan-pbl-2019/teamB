@@ -68,19 +68,38 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 		} else if (action.equals("wrong")) {
 			//不正解時のSE
 			incorrect.play();
+
+		//最終結果
 		} else if(action.equals("lastright")) {
+			//正解時のSE
+			correct.play();
+
 			count ++;
 
+			System.out.println(count);
+
+			//画像の変更
 			if(count > 2) {
-				scenario.go("全問正解");
+
+				((QuizGameContainer) container).setClear();
+
 			} else {
-				scenario.go("終了");
+
+				((QuizGameContainer) container).setGameover();
+
 			}
 		} else if (action.equals("lastwrong")) {
-			if(count > 2) {
-				scenario.go("全問正解");
+			//不正解時のSE
+			incorrect.play();
+
+			//画像の変更
+			if(count > 2)
+			{
+				((QuizGameContainer) container).setClear();
+
 			} else {
-				scenario.go("終了");
+
+				((QuizGameContainer) container).setGameover();
 			}
 		}
 	}
