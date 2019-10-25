@@ -3,6 +3,7 @@ package template.quiz2D;
 import framework.RWT.RWTContainer;
 import framework.RWT.RWTFrame3D;
 import framework.RWT.RWTVirtualController;
+import framework.audio.BGM3D;
 import framework.audio.Sound3D;
 import framework.gameMain.SimpleScenarioGame;
 import framework.model3D.Universe;
@@ -16,14 +17,15 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 	//SEの導入
 	private Sound3D correct = new Sound3D("data//TemplateQuiz//Quiz-Buzzer02-1.wav");
 	private Sound3D incorrect = new Sound3D("data//TemplateQuiz//Quiz-Wrong_Buzzer01-1.wav");
-
+	//BGM
+	private Sound3D iBGM = BGM3D.registerBGM("data//TemplateQuiz//naked.wav");
 	@Override
 	public void init(Universe universe, Camera3D camera) {
 		// シナリオの設定
 		setScenario("data\\TemplateQuiz\\scenario.xml");
 		container.setScenario(scenario);
 		scenario.fire("開始");
-
+		BGM3D.playBGM(iBGM);
 	}
 
 	@Override
@@ -58,7 +60,7 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 		if (action.equals("right")) {
 
 			//正解時のSE
-			correct.play();
+			correct.play(2);
 
 			//正解数のカウント
 			count ++;
@@ -67,12 +69,12 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 
 		} else if (action.equals("wrong")) {
 			//不正解時のSE
-			incorrect.play();
+			incorrect.play(2);
 
 		//最終結果
 		} else if(action.equals("lastright")) {
 			//正解時のSE
-			correct.play();
+			correct.play(2);
 
 			count ++;
 
@@ -90,7 +92,7 @@ public class TemplateQuizGame extends SimpleScenarioGame {
 			}
 		} else if (action.equals("lastwrong")) {
 			//不正解時のSE
-			incorrect.play();
+			incorrect.play(2);
 
 			//画像の変更
 			if(count > 2)
