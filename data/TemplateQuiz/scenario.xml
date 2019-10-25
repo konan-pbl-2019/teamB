@@ -1,7 +1,19 @@
 <Scenario>
 	<FSM name="クイズ" initial="開始前">
+
 		<State name="開始前">
-			<Event name="開始" action="openDialog" trans="一問目">
+
+			<Event name="開始" action="openDialog" trans="a">
+			</Event>
+		</State>
+		<State name ="a" message="雑学系クイズ">
+			<Event name="スタート" trans="一問目">
+			</Event>
+			<Event name="スタート " trans="一問目">
+			</Event>
+			<Event name="スタート  " trans="一問目">
+			</Event>
+			<Event name="スタート    " trans="一問目">
 			</Event>
 		</State>
 		<State name="一問目" message="サボテンのIQは？">
