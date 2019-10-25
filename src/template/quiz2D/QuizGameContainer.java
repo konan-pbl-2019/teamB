@@ -79,14 +79,14 @@ public class QuizGameContainer extends BaseScenarioGameContainer {
 		addWidgetOnBack(background);
 
 		gameover = new RWTImage("documents\\î±ÉQÅ[ÉÄ.jpg");
-		gameover.setRelativePosition(0.1f, -0.05f);
-		gameover.setSize(800, 800);
+		gameover.setRelativePosition(-0.1f, -0.05f);
+		gameover.setSize(1100, 800);
 		gameover.setVisible(false);
 		addWidget(gameover);
 
 		clear = new RWTImage("documents\\èó.jpg");
-		clear.setRelativePosition(0.1f, -0.05f);
-		clear.setSize(800, 800);
+		clear.setRelativePosition(-0.1f, -0.05f);
+		clear.setSize(1100, 800);
 		clear.setVisible(false);
 		addWidget(clear);
 
